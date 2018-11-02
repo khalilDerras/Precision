@@ -1,0 +1,59 @@
+﻿<Window x:Class="TopoSurf.Pages.Window3D" x:Name="DWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TopoSurf.Pages"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="Window3D"
+        Height="450"
+        Width="800">
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+        CaptionHeight="35"  
+        CornerRadius="0"
+        GlassFrameThickness="0"
+                      />
+    </WindowChrome.WindowChrome>
+    <Border BorderThickness="1" BorderBrush="Black">
+        <Grid x:Name="Header" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid  Grid.Row="0" Background="{StaticResource BackgroundDarkBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+
+            <!-- Title -->
+
+            <Viewbox  Grid.Column="0" Grid.ColumnSpan="3" Stretch="Uniform"  Margin="6" >
+                <TextBox Style="{StaticResource Header}"  Text="Precision 3D" />
+            </Viewbox>
+
+            <!-- Buttons  -->
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+
+                <Button Name="Exit"  Style="{StaticResource ExitButton}" Click="Exit_Click">
+                    <Image Source="..\Icons\exit.png"  />
+                </Button>
+            </StackPanel>
+            </Grid>
+
+        <!-- Page Content -->
+            <Grid Grid.Row="1" x:Name="Delgrid" Background="Transparent" MouseLeftButtonDown="Delgrid_MouseDown" MouseWheel="Delgrid_MouseWheel" MouseMove="Delgrid_MouseMove" MouseLeftButtonUp="Delgrid_MouseLeftButtonUp"  >
+                <Slider ValueChanged="SliderZoom_ValueChanged" x:Name="SliderZoom" Maximum="-3.5" Minimum="-20" HorizontalAlignment="Center"  Width="340"  Style="{StaticResource Horizontal_Slider}"/>    
+            </Grid>
+
+            
+
+        </Grid>
+    </Border>
+</Window>

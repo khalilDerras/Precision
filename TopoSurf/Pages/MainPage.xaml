@@ -1,0 +1,237 @@
+﻿<Page x:Class="TopoSurf.MainPage" 
+      x:Name="mainpage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TopoSurf"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="800"
+      KeepAlive="True"
+      >
+    <Page.CommandBindings>
+        <CommandBinding Command="Paste" 
+        Executed="Paste" />
+        <CommandBinding Command="Delete" 
+        Executed="Delete" />
+        <CommandBinding Command="Undo" 
+        Executed="Undo" />
+        <CommandBinding Command="Redo" 
+        Executed="Redo" />
+        <CommandBinding Command="Cut" 
+        Executed="Cut" />
+        <CommandBinding Command="Copy" 
+        Executed="Copy" />
+        <CommandBinding Command="Zoom"
+        Executed="ZoomIn_Click"/>
+        <CommandBinding Command="Help"
+        Executed="ZoomOut_Click"/>
+
+    </Page.CommandBindings>
+    <Page.InputBindings>
+        <KeyBinding Command="Delete"   Key="Delete"/>
+        <KeyBinding Command="Undo" Modifiers="Control"  Key="Z"/>
+        <KeyBinding Command="Redo" Modifiers="Control"  Key="Y"/>
+        <KeyBinding Command="Cut" Modifiers="Control"  Key="X"/>
+        <KeyBinding Command="Copy" Modifiers="Control"  Key="C"/>
+        <KeyBinding Command="Paste" Modifiers="Control"  Key="V"/>
+        <KeyBinding Command="Zoom" Modifiers="Control"  Key="Add"/>
+        <KeyBinding Command="Help" Modifiers="Control"  Key="Subtract"/>
+
+    </Page.InputBindings>
+    <Grid x:Name="Main_Page">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource BackgroundDarkBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <!-- Menu Button -->
+            <Border Grid.Column="0">
+                <Button Name="MenuButton"  Padding="17" Width="50" Height="50" Style="{StaticResource MenuUser}" Click="Menu_Click">
+                    <Image Source="..\Icons\menu.png"  />
+                </Button>
+
+            </Border>
+            <!-- Main Functions -->
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Border Width="100">
+                    <ToggleButton x:Name="drawBtn" Style="{StaticResource ToggleButtons}" Width="70" Click="drawBtn_Click" IsChecked="True">
+                        <DockPanel  Height="50" Width="60" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontSize="11" Height="23" Width="65" VerticalContentAlignment="Center" Foreground="White" Content="Brush" HorizontalContentAlignment="Center" />
+                            <Image DockPanel.Dock="Bottom" HorizontalAlignment="Center" Source="..\Icons\Draw.png" Height="20" Width="20" />
+                        </DockPanel>
+                    </ToggleButton>
+                </Border>
+                <Border Width="100">
+                    <ToggleButton x:Name="Triang" Style="{StaticResource ToggleButtons}" Width="75" Click="Triang_Click">
+                        <DockPanel   Height="48" Width="58" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontSize="11" Height="23"  Width="65" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Foreground="White" Content="Delaunay"/>
+                            <Image DockPanel.Dock="Bottom" HorizontalAlignment="Center" Source="..\Icons\Delaunay.png" Height="20" Width="20"  />
+                        </DockPanel>
+                    </ToggleButton>
+                </Border>
+                <Border Width="100">
+                    <ToggleButton x:Name="_3D" Style="{StaticResource ToggleButtons}" Width="75" Checked="_3D_Click" >
+                        <DockPanel   Height="48" Width="58" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label DockPanel.Dock="Bottom" HorizontalAlignment="Center" FontSize="11" Height="22"  Width="65" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Foreground="White" Content="3D"/>
+                            <Image DockPanel.Dock="Bottom" HorizontalAlignment="Center" Source="..\Icons\3D.png" Height="20" Width="20"  />
+                        </DockPanel>
+                    </ToggleButton>
+                </Border>
+                
+            </StackPanel>
+            <!-- User Button -->
+            <DockPanel Grid.Column="2"  Width="200" >
+                <Menu x:Name="userin"  Width="0"  Background="Transparent"
+                    WindowChrome.IsHitTestVisibleInChrome="True"
+                    BorderThickness="0" Height="60" HorizontalContentAlignment="Right" HorizontalAlignment="Right" DockPanel.Dock="Right">
+                    <MenuItem  Height="60" Width="170" HorizontalAlignment="right" HorizontalContentAlignment="Right">
+                        <MenuItem.Header>
+                            <DockPanel Height="60" Width="160" >
+                                <Label FontSize="11" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="Guest" x:Name="guest"/>
+                                <Image DockPanel.Dock="Right" HorizontalAlignment="Right" Source="..\Icons\profile.png" Height="26" Width="26"  />
+                            </DockPanel>
+                        </MenuItem.Header>
+                        <MenuItem  Header="Sign out" Click="Menu_event"></MenuItem>
+                    </MenuItem>
+
+                </Menu>
+                <Button HorizontalAlignment="Right" DockPanel.Dock="Right" x:Name="user"  Width="100" Style="{StaticResource MenuUser}"  Click="user_Click"  >
+                    <DockPanel  Height="48" Width="88" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Label FontSize="11"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="Guest"/>
+                        <Image  Source="..\Icons\profile.png" Height="26" Width="26"  />
+                    </DockPanel>
+                </Button>
+                
+            </DockPanel>
+
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Drawing space -->
+                <Grid Grid.Row="1" Background="{StaticResource BackgroundGreyBrush}">
+                    <ScrollViewer x:Name="ScrollArea" HorizontalScrollBarVisibility="Auto" 
+                  VerticalScrollBarVisibility="Auto" >
+                        <Canvas x:Name="canvas" PreviewMouseMove="MouseMoveOnCanvas" MouseRightButtonDown="Draw_Click" MouseLeftButtonDown="Canvas_MouseDown" Width="928" Height="527" Background="White" >
+                            <Image x:Name="im"    Width="928" Height="527"   Panel.ZIndex="0"/>
+                        </Canvas>
+                    </ScrollViewer>
+                </Grid>
+                <!-- Slect - Modification -->
+                <Grid Grid.Row="0" Background="{StaticResource BackgroundVeryLightBrush}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <Button Click="Add" Style="{StaticResource UnderTopBarButtons}" Width="150">
+                            <DockPanel>
+                                <Image Height="20" Width="20" Source="..\Icons\Select.png"  />
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Add a control point</Label>
+                            </DockPanel>
+                        </Button>
+                    </StackPanel>
+                    <DockPanel Grid.Column="1" HorizontalAlignment="Center">
+
+                        <Button Style="{StaticResource UnderTopBarButtons}" Command="Cut" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="20" Width="20"  Source="..\Icons\Cut.png"  />
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Cut</Label>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource UnderTopBarButtons}" Command="Copy" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="20" Width="20"  Source="..\Icons\Copy.png"  />
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >Copy</Label>
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource UnderTopBarButtons}" Command="Paste" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="20" Width="20"  Source="..\Icons\Paste.png"  />
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >Paste</Label>
+                            </StackPanel>
+                        </Button>
+
+                    </DockPanel>
+                    <DockPanel Grid.Column="2">
+                        <Button  Style="{StaticResource UnderTopBarButtons}" Command="Undo" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="20" Width="20"  Source="..\Icons\undo.png"  />
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >Undo</Label>
+                            </StackPanel>
+                        </Button>
+                        <Button  Style="{StaticResource UnderTopBarButtons}" Command="Redo" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image  Height="20" Width="20"  Source="..\Icons\redo.png"  />
+                                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" >Redo</Label>
+                            </StackPanel>
+                        </Button>
+                    </DockPanel>
+                </Grid>
+
+            </Grid>
+            <!-- The left side of the page -->
+            <Grid Grid.Column="1" Background="{StaticResource BackgroundVeryLightBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="150" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="20" >Marker</Label>
+                    <DockPanel Grid.Row="1">
+                        <DockPanel DockPanel.Dock="Top" Height="80">
+                            <Label Margin="10 0" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#393939" >Thickness</Label>
+                            <TextBox Name="ThickText" Text="{Binding ElementName=ThickSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" VerticalAlignment="Bottom" Height="25" Width="80" HorizontalAlignment="Right" Margin="10 0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+                        </DockPanel>
+                        <Slider IsSnapToTickEnabled="True"  ValueChanged="ThickSlider_ValueChanged" Minimum = "1" Maximum = "15" Value="5" Name="ThickSlider" VerticalAlignment="Center" Width="150" Style="{StaticResource Horizontal_Slider}"/>
+                    </DockPanel>
+                    <DockPanel Grid.Row="2">
+                        <DockPanel DockPanel.Dock="Top" Height="80">
+                            <Label Margin="10 0" DockPanel.Dock="Left" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#393939">Altitude</Label>
+                            <TextBox x:Name="AltitudeBox" Text="{Binding ElementName=AltSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" VerticalAlignment="Bottom" Height="25" Margin="10 0" HorizontalAlignment="Right" Width="80" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" KeyDown="keyDownOnAltitude" ></TextBox>
+                        </DockPanel>
+                        <Slider  IsSnapToTickEnabled="True" Minimum = "-200" Maximum = "200" Value="0" Name="AltSlider" DockPanel.Dock="Bottom" VerticalAlignment="Center" Width="150" Style="{StaticResource Horizontal_Slider}" ValueChanged="altitudeSliderValueChange" LargeChange="5" SmallChange="5" TickFrequency="5"></Slider>
+                    </DockPanel>
+                </Grid>
+                <DockPanel Grid.Row="3" >
+                    <Label DockPanel.Dock="Top" HorizontalAlignment="Center"  FontSize="20"  >Zoom</Label>
+                    <Button x:Name="ZoomOut" BorderBrush="Transparent" Background="{StaticResource BackgroundVeryLightBrush}" Width="30" Height="30" Margin="10 0" Command="Help">
+                        <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15">-</Label>
+                    </Button>
+                    <Slider x:Name = "ZoomSlider" IsSnapToTickEnabled="True" Minimum = "1" Maximum = "3" Value="1" Width="110" VerticalAlignment="Center" Style="{StaticResource Horizontal_Slider}" ValueChanged="ZoomSlider_ValueChanged"/>
+
+                    <Button x:Name="ZoomIn" BorderBrush="Transparent" Background="{StaticResource BackgroundVeryLightBrush}" Width="30" Height="30" Margin="10 0"  Command="Zoom">
+                        <Label FontSize="15">+</Label>
+                    </Button>
+                    <TextBox  Text="{Binding ElementName=ZoomSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Background="{StaticResource BackgroundVeryLightBrush}" BorderBrush="Transparent" HorizontalAlignment="Center" Width="30" Height="30" Margin="0 0 5 0"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

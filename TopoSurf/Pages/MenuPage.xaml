@@ -1,0 +1,76 @@
+﻿<Page x:Class="TopoSurf.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:TopoSurf"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="MenuPage" >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition  Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Column="0">
+        <StackPanel Background="{StaticResource BackgroundVeryLightBrush}" >
+                <RadioButton x:Name="Back" Height="60"  Style="{StaticResource MenuButtons}" Click="Back_Click">
+                <StackPanel  VerticalAlignment="Stretch" Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\back.png" Height="20" Width="20"/>
+                        <Label Margin="15 0" Content="Back"/>
+                    </StackPanel>
+            </RadioButton>
+            <Separator  Background="Gray"  Height="1"/>
+                <RadioButton x:Name="New" Height="60"  Style="{StaticResource MenuButtons}" Click="New_Click">
+                <StackPanel Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\New.png" Height="20" Width="20"/>
+                        <Label Margin="15 0" Content="New"/>
+                    </StackPanel>
+            </RadioButton>
+
+                <RadioButton x:Name="OpenBtn"  Height="60"  Style="{StaticResource MenuButtons}" Click="OpenBtn_Click">
+                <StackPanel  Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\open.png" Height="20" Width="20" />
+                        <Label Margin="15 0" Content="Open"/>
+                </StackPanel>
+            </RadioButton>
+                <RadioButton x:Name="ImportBtn" Height="60" Style="{StaticResource MenuButtons}" Click="ImportBtn_Click">
+                    <StackPanel  Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\import.png" Height="20" Width="20"/>
+                        <Label Margin="15 0" Content="Import"/>
+                    </StackPanel>
+
+                </RadioButton>
+                <RadioButton x:Name="SaveAsToggle" Height="60" Width="285"  Style="{StaticResource MenuButtons}" IsChecked="True" Click="SaveAs_Click">
+                    <StackPanel  Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\Save as.png" Height="20" Width="20"/>
+                        <Label Margin="15 0" Content="Save as"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton  Height="60" x:Name="ExportBtn"  Style="{StaticResource MenuButtons}" Click="ExportBtn_Click">
+                <StackPanel  Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\export.png" Height="20" Width="20"/>
+                        <Label Margin="15 0" Content="Export"/>
+                </StackPanel>
+            </RadioButton>
+            <Separator Background="Gray"  Height="5"/>
+                <RadioButton x:Name="PrintBtn" Height="60"  Style="{StaticResource MenuButtons}" Click="PrintBtn_Click">
+                <StackPanel  Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\print.png" Height="20" Width="20"/>
+                        <Label Margin="15 0" Content="Print"/>
+                </StackPanel>
+            </RadioButton>
+                <RadioButton x:Name="HelpBtn" Height="60"  Style="{StaticResource MenuButtons}"  Click="HelpBtn_Click">
+                <StackPanel  Orientation="Horizontal" Width="215">
+                        <Image Source="..\Icons\help.png" Height="20" Width="20"/>
+                        <Label Margin="15 0" Content="Help"/>
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+        </ScrollViewer>
+        <Grid Grid.Column="1" >
+            <Frame x:Name="MenuFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentMenuPage,Converter={local:MenuPageValueConverter}}" />
+        </Grid>
+    </Grid>
+</Page>

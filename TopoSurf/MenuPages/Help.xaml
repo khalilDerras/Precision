@@ -1,0 +1,77 @@
+﻿<Page x:Class="TopoSurf.MenuPages.Help"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TopoSurf.MenuPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Help">
+
+    <Grid Background="{StaticResource BackgroundLightBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="1" Text="Help" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30"/>
+            <ScrollViewer Grid.Row="2" >
+                <TextBlock TextWrapping="Wrap" xml:space="preserve" FontSize="16" Width="Auto" > Ceci est l'aide d'utilisation du programme 'précision', logiciel de topographie destiné au grand public comme aux experts du domaine présentant brièvement les différentes fonctionnalités du logiciel, pour une explication plus détaillée consultez le manuel d'utilisation<LineBreak/>
+Fenetre principale :<LineBreak/>
+	Boutton 'Brush' :<LineBreak/>
+        boutton peut etre mis à deux état différents : Actif si vous voulez travailler en mode Dessin , et inactif en mode modification, voici les action que vous pouvez faire sur le canvas dans chaque mode<LineBreak/>
+
+	Mode Dessin : <LineBreak/>
+		Vous pouvez dessiner des courbes de bézier sur le Canvas, pour cela cliquez avec le boutton gauche de la souris là ou vous voulez placer vos points de controle, vous verrez la courbe se dessiner en temps réel au fur et à mesure que vous le faites, une fois votre courbe terminée faites un clic gauche de la souris pour confirmer, vous pourrez ensuite ,si vous le désirez, commencer à dessiner une autre courbe de la meme façon <LineBreak/>
+	Mode Modification des courbes:<LineBreak/>
+		Dans ce mode, vous pouvez séléctionner une courbe en cliquant sur cette dérnière avec le boutton gauche de la souris, un clic dans le vide ou sur une autre courbe provoquera une désélection de la courbe.<LineBreak/>
+		Dès la sélection d'une courbe , vous verrez s'afficher sur le Canvas ses points de controles et ses points tangents que vous pourrez manipuler en les glissant avec le boutton gauuche de la souris, vous verrez l'effet de vos modifications en temps réel<LineBreak/>
+		Aussi, il est possible de glisser toute avec le boutton gauche de la souris pour la déplacer<LineBreak/>
+		Vous pouvez également, si vous manipulez un point de controle d'une courbe , le supprimer grace à la touche 'Supprimer (Delete)' du clavier, vous pouvez de la meme manière supprimer toute une courbe<LineBreak/>
+		aussi, il vous est possible d'ajouter un point de controle en faisant un clic droit sur un des points de controle préexistants suivi de .........<LineBreak/>
+	Barre 'Thickness'<LineBreak/>
+		cette barre vous permettera de changer l'épaisseur d'une courbe sélectionnée, vous pouvez aussi taper la valeur de l'altitude sur le textbox adjacent<LineBreak/>
+	Barre 'Altitude'<LineBreak/>
+		cette barre vous permettera d'affecter à une courbe donnée, une paramètre d'altitude (par défaut,toute courbe déssinée se voit affecter l'altitude 0), cette courbe chengera de couleur selon une échelle prédéfinie dans le programme pour vous permettre de vous repérer plus facilement<LineBreak/>
+		à noter que si vous désirez savoir quelle valeur d'altitude à une courbe donnée, il vous suffit de sélectionner cette courbe et vous verrez s'afficher sa valeur d'altitude sur la bare déroulante, vous pouvez aussi taper la valeur exacte de l'altitude sur le textbox<LineBreak/>
+	Barre 'Zoom'<LineBreak/>
+		cette barre vous permettera de zoomer à l'intérieur de Canvas pour plus ou moins de précision , des barres déroulantes vous permetterons de naviguer vers la zone du Canvas que vous désirez.<LineBreak/>
+	Boutton 'Delaunay':<LineBreak/>
+		ce boutton vous permet d'afficher la triangulation de Delaunay obtenue à partir des points de controle des courbes, cette triangulation sert de base à la représentation 3D de votre surface,si vous voulez cacher les triangles affichés, cliquez encore une fois sur ce boutton<LineBreak/>
+	Boutton 3D : <LineBreak/>
+		ce boutton permet l'affichage de la surface 3D obtenue à partir de l'application de la triangulation de Delaunay sur vos courbes, à noter que la l'affichage 3D prend en compte les triangles affichés sur le Canvas donc vous devez afficher les triangles de Delaunay avant d'utiliser cette fonctionnalité (sinon vous aurez un affichage vide) , la surface 3D en question sera affichée sur une fentere séparée ou vous pourrez zoomer et changer à volonté d'angle de vue pour voir votre surface de n'importe quel angle, le changement d'angle se fait par déplacement de la souris avec maintient du boutton gauche enfoncé, le zoom se fait, quant à lui, grace à roulette de la souris<LineBreak/>
+	Bouttons 'Undo' et 'Redo'<LineBreak/> 
+		Vous permettent respectivement d'annuler la dernière action/modification faite et de la refaire encore une fois<LineBreak/>
+	Boutton Menu : (Haut gauche)<LineBreak/>
+		vous permet d'afficher le menu de l'application , nous allons présenter les différentes fonctions de ce menu<LineBreak/>
+Gestion Utiliasteurs:<LineBreak/>
+	Par défaut, précision crée des fichiers n'appartenant à aucune personne en particulier et pouvant donc etre utilisés et modiés par quiconque, pour pouvoir créer et utiliser ses propres fichiers, vous pouvez cliquez sur le boutton 'User' pour voir s'afficher une fenetre vous permettant soit de créer un nouveau compte utilisateur, soit d'utiliser un compte préexistant en fournissant à l'application votre nom d'utilisateur et votre mot de passe. Lorsque vous utilisez votre compte utilisateur, les fichiers que vous créez ne pourront etre ouvert dans l'applicaton qu'en utilisant votre compte utilisateur<LineBreak/>
+
+Menu<LineBreak/>
+	Option 'Back'<LineBreak/>
+		vous permet de revenir à la fenetre principale<LineBreak/>
+	Option 'New'<LineBreak/>
+		vous permet de travailler sur un nouveau fichier<LineBreak/>
+	Option Open:<LineBreak/>
+		vous permet de charger un fichier de courbe<LineBreak/>
+	Import :<LineBreak/>
+		vous permet dimporter une image comme arrière-plan de votre Canvas<LineBreak/>
+	Save:<LineBreak/>
+		vous permet de sauvegarder votre travail<LineBreak/>
+	Save As:<LineBreak/>
+		vous permet de sauvegarder sur un fichier différent<LineBreak/> 
+	Export:<LineBreak/>
+		vous permet d'exporter le contenu de votre Canvas comme image<LineBreak/>
+	Print:<LineBreak/>
+		vous permet d'imprimer le contenu de votre Canvas:<LineBreak/>
+	Help:<LineBreak/>
+		Affiche  l'aide intégrée au logiciel <LineBreak/></TextBlock>
+            </ScrollViewer>
+        </Grid>
+        </Grid>
+</Page>

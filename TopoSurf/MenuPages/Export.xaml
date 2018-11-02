@@ -1,0 +1,35 @@
+﻿<Page x:Class="TopoSurf.MenuPages.Export"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TopoSurf.MenuPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="Export">
+
+    <Grid Background="{StaticResource BackgroundLightBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="1" Text="Export" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="30"/>
+            <StackPanel Grid.Row="2" Margin="0 15">
+                <TextBlock Text="Export an image" FontSize="20" Height="40"/>
+                <TextBlock Text="Export an image of the main window."  Height="40"/>
+                <Button x:Name="saveAsAProject" Style="{StaticResource InsideMenu}" Click="saveAsAProject_Click">
+                    <StackPanel>
+                        <Image Source="../Icons/imageAS.png" Height="30" Width="30" Margin="0 5"/>
+                        <Label Content="2D PNG" FontSize="10"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
